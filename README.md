@@ -1,7 +1,7 @@
 # demo-static-factory-method
 
-O objetivo desde projeto foi testar a utilização de static factory methods em classes de entidade, bem como, sua integração com Spring Data JPA e Mapstruct.
+The objective of this project was to test the use of static factory methods in entity classes, as well as their integration with Spring Data JPA and Mapstruct.
 
-Para rodar o projeto, basta que definam um arquivo .properties de desenvolvimento, ou apenas utilizando e preenchendo o arquivo de exemplo (application-example.properties).
+To run the project, just define a development .properties file, or just use and fill in the example file (application-example.properties).
 
-Será necessário criar também as tabelas e suas devidas inserções de dados, o banco de dados escolhido para o exemplo foi o PostgreSQL. Para modificar esta decisão, altere o arquivo application.properties.
+It will also be necessary to create the tables and their appropriate data insertions, the database chosen for the example was PostgreSQL. To modify this decision, change the application.properties file and driverClassName from the application-example.properties file.
