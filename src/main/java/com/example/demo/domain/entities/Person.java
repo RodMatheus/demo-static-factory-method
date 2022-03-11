@@ -34,7 +34,7 @@ public class Person implements Serializable {
 	
 	@OneToMany(mappedBy = "person")
 	@Fetch(FetchMode.JOIN)
-	private List<Adress> adresses;
+	private List<Address> addresses;
 
 	private Person() {};
 	

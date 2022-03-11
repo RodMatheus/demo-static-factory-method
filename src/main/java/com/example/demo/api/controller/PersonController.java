@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.api.mapper.AdressMapper;
+import com.example.demo.api.mapper.AddressMapper;
 import com.example.demo.api.mapper.PersonMapper;
-import com.example.demo.api.model.AdressDTO;
+import com.example.demo.api.model.AddressDTO;
 import com.example.demo.api.model.PersonDTO;
-import com.example.demo.domain.entities.Adress;
+import com.example.demo.domain.entities.Address;
 import com.example.demo.domain.entities.Person;
-import com.example.demo.domain.repositories.AdressRepository;
+import com.example.demo.domain.repositories.AddressRepository;
 import com.example.demo.domain.repositories.PersonRepository;
 
 @RestController
@@ -24,15 +24,15 @@ import com.example.demo.domain.repositories.PersonRepository;
 public class PersonController {
 	
 	private final PersonRepository personRepository;
-	private final AdressRepository adressRepository;
+	private final AddressRepository adressRepository;
 	private final PersonMapper personMapper;
-	private final AdressMapper adressMapper;
+	private final AddressMapper adressMapper;
 	
 	@Autowired
 	public PersonController(PersonRepository personRepository,
-			AdressRepository adressRepository,
+			AddressRepository adressRepository,
 			PersonMapper personMapper,
-			AdressMapper adressMapper) {
+			AddressMapper adressMapper) {
 		this.personRepository = personRepository;
 		this.adressRepository = adressRepository;
 		this.personMapper = personMapper;
@@ -49,11 +49,11 @@ public class PersonController {
 	}
 	
 	@GetMapping("/{id}/adresses")
-	public ResponseEntity<Collection<AdressDTO>> getAdress(@PathVariable(name = "id") Integer id){
+	public ResponseEntity<Collection<AddressDTO>> getAdress(@PathVariable(name = "id") Integer id){
 		
-		Collection<Adress> adresses = adressRepository.findByPersonId(id).orElseThrow(RuntimeException::new);
+		Collection<Address> addresses = adressRepository.findByPersonId(id).orElseThrow(RuntimeException::new);
 		
-		Collection<AdressDTO> dtos = adressMapper.toListDTO(adresses);
+		Collection<AddressDTO> dtos = adressMapper.toListDTO(addresses);
 		return ResponseEntity.ok(dtos);
 	}
 	

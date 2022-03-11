@@ -18,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter(value = AccessLevel.PRIVATE)
-public class Adress implements Serializable {
+public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -33,10 +33,10 @@ public class Adress implements Serializable {
 	@JoinColumn(name = "person")
 	private Person person;
 
-	private Adress() {}
+	private Address() {}
 	
-	public static Adress of(String zipCode, Person person) {
-		Adress adress = new Adress();
+	public static Address of(String zipCode, Person person) {
+		Address adress = new Address();
 		adress.setZipCode(zipCode);
 		adress.setPerson(person);
 		
@@ -56,7 +56,7 @@ public class Adress implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Adress other = (Adress) obj;
+		Address other = (Address) obj;
 		return Objects.equals(id, other.id) && Objects.equals(person, other.person)
 				&& Objects.equals(zipCode, other.zipCode);
 	}

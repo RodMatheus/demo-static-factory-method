@@ -11,7 +11,7 @@ import lombok.With;
 @With
 @Getter
 @JsonInclude(value = Include.NON_NULL)
-public class AdressDTO {
+public class AddressDTO {
 
 	private String zipCode;
 	private PersonDTO person;

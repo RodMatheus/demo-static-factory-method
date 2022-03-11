@@ -20,5 +20,5 @@ public class PersonDTO {
 	private Integer age;
 	private LocalDate birthday;
 	
-	private Collection<AdressDTO> adresses;
+	private Collection<AddressDTO> addresses;
 }

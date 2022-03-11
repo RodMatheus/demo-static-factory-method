@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.domain.entities.Adress;
+import com.example.demo.domain.entities.Address;
 
 @Repository
-public interface AdressRepository extends JpaRepository<Adress, Integer> {
+public interface AddressRepository extends JpaRepository<Address, Integer> {
 
-	Optional<Collection<Adress>> findByPersonId(Integer id);
+	Optional<Collection<Address>> findByPersonId(Integer id);
 
 }
