@@ -29,11 +29,8 @@ public class Adress implements Serializable {
 	@Column(name = "zipcode")
 	private String zipCode;
 	
-//	@Column(name = "person")
-//	private Integer personId;
-	
 	@ManyToOne
-	@JoinColumn(name = "person", updatable = false, insertable = false)
+	@JoinColumn(name = "person")
 	private Person person;
 
 	private Adress() {}
