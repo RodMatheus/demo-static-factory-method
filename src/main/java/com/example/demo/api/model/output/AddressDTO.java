@@ -13,6 +13,7 @@ import lombok.With;
 @JsonInclude(value = Include.NON_NULL)
 public class AddressDTO {
 
+	private Integer id;
 	private String zipCode;
 	private PersonDTO person;
 }

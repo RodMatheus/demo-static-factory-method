@@ -52,8 +52,17 @@ public class PersonController {
 
 		List<Person> persons = personRepository.findAll();
 
-		Collection<PersonDTO> dtos = personMapper.toListDTO(persons);
+		Collection<PersonDTO> dtos = personMapper.toSimpleListResource(persons);
 		return ResponseEntity.ok(dtos);
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<PersonDTO> getById(@PathVariable(name = "id") Integer id) {
+
+		Person person = personRepository.findById(id).orElseThrow(RuntimeException::new);;
+
+		PersonDTO dto = personMapper.toResource(person);
+		return ResponseEntity.ok(dto);
 	}
 
 	@GetMapping("/{id}/adresses")
@@ -85,7 +94,7 @@ public class PersonController {
 
 		Person updatedPerson = personService.patchPerson(person, patchPerson);
 
-		PersonDTO dto = personMapper.toDTO(updatedPerson);
+		PersonDTO dto = personMapper.toSimpleResource(updatedPerson);
 		return ResponseEntity.ok(dto);
 	}
 }

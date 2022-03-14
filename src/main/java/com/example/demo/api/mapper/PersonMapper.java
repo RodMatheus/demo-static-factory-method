@@ -1,6 +1,7 @@
 package com.example.demo.api.mapper;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,12 +16,20 @@ import com.example.demo.domain.entities.Person;
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
 
-	PersonDTO toDTO(Person person);
+	default List<PersonDTO> toSimpleListResource(Collection<Person> persons) {
+		return persons
+				.stream()
+				.map(person -> toSimpleResource(person))
+				.toList();
+	}
 	
-	Collection<PersonDTO> toListDTO(Collection<Person> persons);
+	@Mapping(ignore = true, target = "addresses")
+	PersonDTO toSimpleResource(Person person);
 	
-	@Mapping(ignore = true, source = "adress.person", target = "person")
-	AddressDTO toAdressDTO(Address adress);
+	PersonDTO toResource(Person person);
+	
+	@Mapping(ignore = true,  target = "person", source = "person")
+	AddressDTO toAdressResource(Address adress);
 
 	@Mapping(ignore = true, target = "addresses")
 	@Mapping(ignore = true, target = "id")

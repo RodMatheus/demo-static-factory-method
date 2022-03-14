@@ -11,7 +11,7 @@ import com.example.demo.domain.entities.Address;
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
 
-	@Mapping(ignore = true, source = "person.addresses",  target = "person.addresses")
+	@Mapping(ignore = true, target = "person")
 	AddressDTO toDTO(Address address);
 	
 	Collection<AddressDTO> toListDTO(Collection<Address> adresses);
