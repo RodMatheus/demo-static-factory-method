@@ -16,6 +16,7 @@ import lombok.With;
 @JsonInclude(value = Include.NON_NULL)
 public class PersonDTO {
 
+	private Integer id;
 	private String name;
 	private Integer age;
 	private LocalDate birthday;

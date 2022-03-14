@@ -4,11 +4,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.api.mapper.AddressMapper;
 import com.example.demo.api.mapper.PersonMapper;
 import com.example.demo.api.model.input.PatchPerson;
+import com.example.demo.api.model.input.PostPerson;
 import com.example.demo.api.model.output.AddressDTO;
 import com.example.demo.api.model.output.PersonDTO;
 import com.example.demo.domain.entities.Address;
@@ -62,6 +65,16 @@ public class PersonController {
 		return ResponseEntity.ok(dtos);
 	}
 
+	@PostMapping
+	public ResponseEntity<Void> post(@RequestBody PostPerson postPerson) {
+		
+		personService.postPerson(postPerson);
+		
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.build();
+	}
+	
 	@PatchMapping("/{id}")
 	@Transactional
 	public ResponseEntity<PersonDTO> patch(@PathVariable(name = "id") Integer id,
