@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.example.demo.api.model.AddressDTO;
+import com.example.demo.api.model.output.AddressDTO;
 import com.example.demo.domain.entities.Address;
 
 @Mapper(componentModel = "spring")

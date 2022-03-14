@@ -1,7 +1,4 @@
-package com.example.demo.api.model;
-
-import java.time.LocalDate;
-import java.util.Collection;
+package com.example.demo.api.model.output;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -14,11 +11,8 @@ import lombok.With;
 @With
 @Getter
 @JsonInclude(value = Include.NON_NULL)
-public class PersonDTO {
+public class AddressDTO {
 
-	private String name;
-	private Integer age;
-	private LocalDate birthday;
-	
-	private Collection<AddressDTO> addresses;
+	private String zipCode;
+	private PersonDTO person;
 }
