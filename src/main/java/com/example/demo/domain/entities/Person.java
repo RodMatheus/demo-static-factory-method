@@ -12,12 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
+@Setter(value = AccessLevel.PRIVATE)
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,11 +35,17 @@ public class Person implements Serializable {
 
 	private Person() {};
 	
-	public static Person of(String name, Integer age, LocalDate birthday) {
+	public static Person of(final String name, final Integer age, final LocalDate birthday) {
 		Person person = new Person();
 		person.setName(name);
 		person.setAge(age);
 		person.setBirthday(birthday);
+		return person;
+	}
+	
+	public static Person updateOf(final Person person, final String name, final Integer age) {
+		person.setName(name);
+		person.setAge(age);
 		return person;
 	}
 

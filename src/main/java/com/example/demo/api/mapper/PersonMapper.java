@@ -34,5 +34,9 @@ public interface PersonMapper {
 	@Mapping(ignore = true, target = "addresses")
 	@Mapping(ignore = true, target = "id")
 	@Mapping(ignore = true, target = "birthday")
-	void uptadeFromPatch(PatchPerson patchPerson, @MappingTarget Person person);
+	default void uptadeFromPatch(PatchPerson patchPerson, @MappingTarget Person person) {
+		if(person != null && patchPerson != null) {
+			Person.updateOf(person, patchPerson.getName(), patchPerson.getAge());
+		}
+	}
 }
