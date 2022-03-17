@@ -16,7 +16,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
- 		<project.test.result.directory>${project.build.directory}/test-results</project.test.result.directory>
+		<project.test.result.directory>${project.build.directory}/test-results</project.test.result.directory>
 		<java.version>11</java.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<mapstruct.processor.version>1.4.2.Final</mapstruct.processor.version>
@@ -67,7 +67,6 @@
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
