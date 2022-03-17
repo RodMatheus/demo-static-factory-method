@@ -2,6 +2,7 @@ package com.example.demo.api.mapper;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,7 +19,7 @@ public interface PersonMapper {
 		return persons
 				.stream()
 				.map(person -> toSimpleResource(person))
-				.toList();
+				.collect(Collectors.toList());
 	}
 	
 	@Mapping(ignore = true, target = "addresses")
