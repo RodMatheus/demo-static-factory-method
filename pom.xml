@@ -113,6 +113,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- TESTES CONFIG -->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
