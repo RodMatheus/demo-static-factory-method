@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
-import com.example.demo.api.model.input.PatchPerson;
 import com.example.demo.api.model.output.AddressDTO;
 import com.example.demo.api.model.output.PersonDTO;
 import com.example.demo.domain.entities.Address;
@@ -30,13 +28,4 @@ public interface PersonMapper {
 	
 	@Mapping(ignore = true,  target = "person", source = "person")
 	AddressDTO toAdressResource(Address adress);
-
-	@Mapping(ignore = true, target = "addresses")
-	@Mapping(ignore = true, target = "id")
-	@Mapping(ignore = true, target = "birthday")
-	default void uptadeFromPatch(PatchPerson patchPerson, @MappingTarget Person person) {
-		if(person != null && patchPerson != null) {
-			Person.updateOf(person, patchPerson.getName(), patchPerson.getAge());
-		}
-	}
 }

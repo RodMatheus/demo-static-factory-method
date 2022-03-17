@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.api.mapper.PersonMapper;
 import com.example.demo.api.model.input.PatchPerson;
 import com.example.demo.api.model.input.PostPerson;
 import com.example.demo.domain.entities.Address;
@@ -17,21 +16,22 @@ public class PersonService {
 
 	private final PersonRepository personRepository;
 	private final AddressRepository addressRepository;
-	private final PersonMapper personMapper;
 
 	@Autowired
 	public PersonService(
 			PersonRepository personRepository,
-			AddressRepository addressRepository,
-			PersonMapper personMapper) {
+			AddressRepository addressRepository) {
 		this.personRepository = personRepository;
 		this.addressRepository = addressRepository;
-		this.personMapper = personMapper;
 	}
 
 	public Person patchPerson(Person person, PatchPerson patchPerson) {
 
-		personMapper.uptadeFromPatch(patchPerson, person);
+		Person
+			.updateOf(
+					person,
+					patchPerson.getName(),
+					patchPerson.getAge());
 
 		return person;
 	}
