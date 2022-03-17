@@ -1,4 +1,4 @@
-package com.example.demo.domain.services;
+package com.example.demo.test.unit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,9 +12,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.example.demo.api.mapper.PersonMapper;
 import com.example.demo.api.model.input.PatchPerson;
@@ -23,8 +23,9 @@ import com.example.demo.api.model.input.PostPerson;
 import com.example.demo.domain.entities.Person;
 import com.example.demo.domain.repositories.AddressRepository;
 import com.example.demo.domain.repositories.PersonRepository;
+import com.example.demo.domain.services.PersonService;
 
-@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = PersonService.class)
 public class PersonServiceTest {
 
